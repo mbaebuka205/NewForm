@@ -1,20 +1,19 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
-
-const Register = () =>{
+const Register4 = () =>{
     return(
         <div>
            <Container>
             <Main>
                <DotHolder>
                 <Dots bg='#F04E67'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
                 <Line bg='#e5dcde'/>
                 <Dots bg='#e5dcde'/>
                </DotHolder>
@@ -22,15 +21,15 @@ const Register = () =>{
                <Head>ONLINE APPLICATION</Head>
 
                <Inputs>
-                   <Input1>Personnal Information</Input1>
-                   <Input type='text' placeholder='Firstname'/>
-                   <Input type='text' placeholder='Surname'/>
-                   <Input type='text' placeholder='Birthdate'/>
-                   <Input type='text' placeholder='Insurance number'/>
-                   <Input type='text' placeholder='Family Status'/>
+                   <Input1>Contact information</Input1>
+                   <Input type='text' placeholder='Preferred entrance date'/>
+                   <Input type='text' placeholder='Number of people'/>
                </Inputs>
 
-               <Button to='/register1'>NEXT</Button>
+               <Buttonholder>
+               <Button to='/register3'>PREVIOUS</Button>
+               <Button to="/register5">NEXT</Button>
+               </Buttonholder>
 
             </Main>
            </Container>
@@ -38,7 +37,11 @@ const Register = () =>{
     )
 }
 
-export default Register;
+export default Register4;
+const Buttonholder = styled.div`
+    display: flex;
+    gap:15px;
+`
 const Input1 = styled.div`
    height  : 43px;
   width: 320px;
@@ -60,14 +63,11 @@ const Button = styled(Link)`
   color: white;
   font-size: 18px;
   border-radius: 3px;
-  text-decoration: none;
   border: 2px solid silver;
-  /* &:hover {
-    border: 1px solid silver;
-  } */
+  text-decoration: none;
 `
 const Inputs = styled.div`
-  height  : 330px;
+ min-height  : 200px;
   width: 390px;
   border: 1px solid silver;
   border-radius: 10px;
@@ -77,6 +77,7 @@ const Inputs = styled.div`
   flex-direction: column;
   padding-top: 70px;
   padding-bottom: 70px;
+  gap: 18px;
 `
 const Head = styled.h3`   
 `
@@ -99,7 +100,7 @@ const Dots = styled.div<{bg:string}>`
   border-radius: 50%;
 `
 const Main = styled.div`
-   height: 600px;
+   min-height: 600px;
    width: 650px;
    border: 1px solid silver;
    display: flex;

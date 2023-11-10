@@ -1,36 +1,39 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
-
-const Register = () =>{
+const Register5 = () =>{
     return(
         <div>
            <Container>
             <Main>
                <DotHolder>
                 <Dots bg='#F04E67'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
-                <Line bg='#e5dcde'/>
-                <Dots bg='#e5dcde'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
+                <Line bg='#F04E67'/>
+                <Dots bg='#F04E67'/>
                </DotHolder>
 
                <Head>ONLINE APPLICATION</Head>
 
                <Inputs>
-                   <Input1>Personnal Information</Input1>
-                   <Input type='text' placeholder='Firstname'/>
-                   <Input type='text' placeholder='Surname'/>
-                   <Input type='text' placeholder='Birthdate'/>
-                   <Input type='text' placeholder='Insurance number'/>
-                   <Input type='text' placeholder='Family Status'/>
+                   <Input1>General Conditions</Input1>
+                   <Input>
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+                    minus corporis quaerat quos repellendus iure quibusdam cupiditate id commodi!
+                    Dolores eum non animi
+                    rem vitae libero facere dignissimos totam eveniet.
+                   </Input>
                </Inputs>
 
-               <Button to='/register1'>NEXT</Button>
+               <Buttonholder>
+               <Button to='/register4'>PREVIOUS</Button>
+               {/* <Button to="/register5">NEXT</Button> */}
+               </Buttonholder>
 
             </Main>
            </Container>
@@ -38,17 +41,22 @@ const Register = () =>{
     )
 }
 
-export default Register;
+export default Register5;
+const Buttonholder = styled.div`
+    display: flex;
+    gap:15px;
+`
 const Input1 = styled.div`
    height  : 43px;
   width: 320px;
   border-radius: 5px; 
 `
-const Input = styled.input`
-  height  : 43px;
+const Input = styled.div`
+  min-height  : 43px;
   width: 320px;
-  border: 1px solid silver;
+  border: 0px solid silver;
   border-radius: 5px;
+  outline: none;
   padding-left: 10px;
   &::placeholder{
     font-size: 17px;
@@ -60,14 +68,11 @@ const Button = styled(Link)`
   color: white;
   font-size: 18px;
   border-radius: 3px;
-  text-decoration: none;
   border: 2px solid silver;
-  /* &:hover {
-    border: 1px solid silver;
-  } */
+  text-decoration: none;
 `
 const Inputs = styled.div`
-  height  : 330px;
+ min-height  : 200px;
   width: 390px;
   border: 1px solid silver;
   border-radius: 10px;
@@ -77,6 +82,7 @@ const Inputs = styled.div`
   flex-direction: column;
   padding-top: 70px;
   padding-bottom: 70px;
+  gap: 18px;
 `
 const Head = styled.h3`   
 `
@@ -99,7 +105,7 @@ const Dots = styled.div<{bg:string}>`
   border-radius: 50%;
 `
 const Main = styled.div`
-   height: 600px;
+   min-height: 600px;
    width: 650px;
    border: 1px solid silver;
    display: flex;
