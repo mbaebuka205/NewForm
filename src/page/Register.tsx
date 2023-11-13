@@ -1,8 +1,17 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import { useState } from 'react'
 
 
 const Register = () =>{
+  const [name, setName] = useState<string>('')
+  const [surname, setSurname] = useState<string>('')
+  const [birthdate, setBirthdate] = useState<string>('')
+  const [Insurance, setInsurance] = useState<string>('')
+  const [Family, setFamily] = useState<string>('')
+
+  const mainData = JSON.parse(localStorage.getItem('info')!)
+
     return(
         <div>
            <Container>
@@ -23,14 +32,47 @@ const Register = () =>{
 
                <Inputs>
                    <Input1>Personnal Information</Input1>
-                   <Input type='text' placeholder='Firstname'/>
-                   <Input type='text' placeholder='Surname'/>
-                   <Input type='text' placeholder='Birthdate'/>
-                   <Input type='text' placeholder='Insurance number'/>
-                   <Input type='text' placeholder='Family Status'/>
+                   <Input type='text' placeholder='Firstname'
+                     value={name}
+                     onChange={(e:any)=>{
+                          setName(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Surname'
+                     value={surname}
+                     onChange={(e:any)=>{
+                          setSurname(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Birthdate'
+                     value={birthdate}
+                     onChange={(e:any)=>{
+                          setBirthdate(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Insurance number'
+                     value={Insurance}
+                     onChange={(e:any)=>{
+                          setInsurance(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Family Status'
+                     value={Family}
+                     onChange={(e:any)=>{
+                          setFamily(e.target.value)
+                     }}
+                   />
                </Inputs>
 
-               <Button to='/register1'>NEXT</Button>
+               <Button to='/register1'
+                  onClick={()=>{
+                    
+                    const anObj:{} = {
+                      name, surname, birthdate, Insurance, Family
+                    }
+                    localStorage.setItem('info', JSON.stringify(anObj))
+                  }}
+               >NEXT</Button>
 
             </Main>
            </Container>

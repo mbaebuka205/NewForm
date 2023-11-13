@@ -1,7 +1,16 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {useState} from 'react'
 
 const Register1 = () =>{
+     
+     const [street, setStreet] = useState<string>('')
+     const [city, setCity] = useState<string>('')
+     const [postcode, setPostcode] = useState<string>('')
+     const [country, setCountry] = useState<string>('')
+   
+     const mainData = JSON.parse(localStorage.getItem("info")!)
+
     return(
         <div>
            <Container>
@@ -22,15 +31,45 @@ const Register1 = () =>{
 
                <Inputs>
                    <Input1>Address</Input1>
-                   <Input type='text' placeholder='Street'/>
-                   <Input type='text' placeholder='City'/>
-                   <Input type='text' placeholder='Postcode'/>
-                   <Input type='text' placeholder='Country'/>
+                   <Input type='text' placeholder='Street'
+                     value={street}
+                     onChange={(e:any)=>{
+                          setStreet(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='City'
+                     value={city}
+                     onChange={(e:any)=>{
+                          setCity(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Postcode'
+                     value={postcode}
+                     onChange={(e:any)=>{
+                          setPostcode(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Country'
+                     value={country}
+                     onChange={(e:any)=>{
+                          setCountry(e.target.value)
+                     }}
+                   />
                </Inputs>
 
                <Buttonholder>
                <Button to='/'>PREVIOUS</Button>
-               <Button to='/register3'>NEXT</Button>
+               <Button to='/register3'
+                  onClick={() =>{
+                    const va: {} = {
+                     street, city, postcode, country,
+                      name: mainData?.name, surname: mainData?.surname,
+                      birthdate: mainData?.birthdate, insurance: mainData.Insurance, family: mainData?.Family
+                    }
+                    localStorage.setItem('info', JSON.stringify(va))
+                     
+                  }}
+               >NEXT</Button>
                </Buttonholder>
 
             </Main>

@@ -1,7 +1,14 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {useState} from 'react'
 
 const Register3 = () =>{
+
+  const [email, setEmail] = useState<string>('')
+  const [number, setNumber] = useState<number>(0)
+  const [numb, setNumb] = useState<number>(0)
+
+  const mainData = JSON.parse(localStorage.getItem("info")!)
     return(
         <div>
            <Container>
@@ -22,14 +29,38 @@ const Register3 = () =>{
 
                <Inputs>
                    <Input1>Contact information</Input1>
-                   <Input type='email' placeholder='Email address'/>
-                   <Input type='number' placeholder='Phone'/>
-                   <Input type='number' placeholder='Mobile'/>
+                   <Input type='email' placeholder='Email address'
+                     value={email}
+                     onChange={(e:any) =>{
+                      setEmail(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Phone'
+                      value={number}
+                      onChange={(e:any) =>{
+                       setNumber(e.target.value)
+                      }}
+                   />
+                   <Input type='number' placeholder='Mobile'
+                      value={numb}
+                      onChange={(e:any) =>{
+                       setNumb(e.target.value)
+                      }}
+                   />
                </Inputs>
 
                <Buttonholder>
                <Button to='/register1'>PREVIOUS</Button>
-               <Button to="/register4">NEXT</Button>
+               <Button to="/register4"
+                 onClick={() =>{
+                  const va:{} = {
+                    email, number, numb, 
+                    street: mainData?.street, city: mainData?.city, postcode: mainData?.postcode, country: mainData?.country,
+                    name: mainData?.name, surname: mainData?.surname,
+                    birthdate: mainData?.birthdate, insurance: mainData.Insurance, family: mainData?.Family
+                  }
+                 }}
+               >NEXT</Button>
                </Buttonholder>
 
             </Main>

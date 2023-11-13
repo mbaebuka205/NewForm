@@ -1,7 +1,12 @@
 import styled from 'styled-components'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 const Register4 = () =>{
+  const [entrance ,setEntrance] = useState<string>('')
+  const [people ,setPeople] = useState<string>('')
+
+  const mainData = JSON.parse(localStorage.getItem("info")!)
     return(
         <div>
            <Container>
@@ -22,13 +27,34 @@ const Register4 = () =>{
 
                <Inputs>
                    <Input1>Contact information</Input1>
-                   <Input type='text' placeholder='Preferred entrance date'/>
-                   <Input type='text' placeholder='Number of people'/>
+                   <Input type='text' placeholder='Preferred entrance date'
+                     value={entrance}
+                     onChange={(e:any) =>{
+                       setEntrance(e.target.value)
+                     }}
+                   />
+                   <Input type='text' placeholder='Number of people'
+                     value={people}
+                     onChange={(e:any) =>{
+                      setPeople(e.target.value)
+                     }}
+                   />
                </Inputs>
 
                <Buttonholder>
                <Button to='/register3'>PREVIOUS</Button>
-               <Button to="/register5">NEXT</Button>
+               <Button to="/register5"
+                 onClick={()=>{
+                   const va:{} ={
+                    entrance, people,
+                    email: mainData?.email, number: mainData?.number, numb: mainData?.numb, 
+                    street: mainData?.street, city: mainData?.city,
+                     postcode: mainData?.postcode, country: mainData?.country,
+                    name: mainData?.name, surname: mainData?.surname,
+                    birthdate: mainData?.birthdate, insurance: mainData.Insurance, family: mainData?.Family
+                   }
+                 }}
+               >NEXT</Button>
                </Buttonholder>
 
             </Main>
